@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
+
 class App extends Component {
     state = {
         persons: [
@@ -36,11 +37,21 @@ class App extends Component {
     }
 
   render() {
+
+        const style = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer'
+
+        };
+
     return (
       <div className="App">
           <h1>Hi Im a react app</h1>
           <p>This is really working</p>
-          <button onClick={this.switchNameHandler.bind(this, 'ThatDude')}>Switch name</button>
+          <button style= {style} onClick={this.switchNameHandler.bind(this, 'ThatDude')}>Switch name</button>
           <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Dude!')}>Hobbies: running</Person>
           <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangeHandler}/>
           <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
