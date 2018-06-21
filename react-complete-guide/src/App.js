@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
@@ -7,42 +7,41 @@ import Person from './Person/Person';
 class App extends Component {
     state = {
         persons: [
-            {name: 'Dude', age: 33 },
-            {name: 'SomeGuy', age: 34 },
-            {name: 'ThisGuy', age: 35 }
+            {id: 'yolds', name: 'Dude', age: 33 },
+            {id: 'foldsnf', name: 'SomeGuy', age: 34 },
+            {id: 'nbdsaof', name: 'ThisGuy', age: 35 }
         ],
         otherState: 'some other value',
         showPersons: false
     };
 
-    switchNameHandler = (newName) => {
-        // console.log('was clicked');
-        // DONT DO THIS this.state.persons[0].name = 'ThatGuy';
-        this.setState({
-            persons: [
-                {name: newName, age: 37 },
-                {name: 'SomeGuy', age: 34 },
-                {name: 'ThisGuy', age: 35 }
-            ]
+    nameChangeHandler = (event, id) => {
+        const personIndex = this.state.persons.findIndex(p => {
+            return p.id === id
         });
+        const person = {...this.state.persons[personIndex]};
+        //const person = Object.assign({}, this.state.persons[personIndex]);
+        person.name = event.target.value;
+        const persons = [...this.state.persons];
+        persons[personIndex] = person;
+        this.setState({persons: persons});
     };
 
-    nameChangeHandler = (event) => {
-        this.setState({
-            persons: [
-                {name: 'Dude', age: 37 },
-                {name: event.target.value, age: 34 },
-                {name: 'ThisGuy', age: 35 }
-            ]
-        });
-    };
 
     togglePersonHandler = () => {
         const doesShow = this.state.showPersons;
         this.setState({showPersons: !doesShow});
     };
 
-  render() {
+    deletePersonHandler = (personIndex) => {
+        //const persons = this.state.persons.slice();
+        const persons = [...this.state.persons]; // modern syntext
+        persons.splice(personIndex, 1);
+        this.setState({persons: persons})
+    };
+
+
+    render() {
 
         const style = {
             backgroundColor: 'white',
@@ -54,25 +53,32 @@ class App extends Component {
 
         let persons = null;
 
-        if(this.state.showPersons){
-            persons = (<div>
-                <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler.bind(this, 'Dude!')}>Hobbies: running</Person>
-                <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangeHandler}/>
-                <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-            </div>);
+        if(this.state.showPersons) {
+            persons = (
+                <div>
+                    {this.state.persons.map((person, index) => {
+                        return <Person
+                        name={person.name}
+                        age={person.age}
+                        key={person.id}
+                        click={() => this.deletePersonHandler(index)}
+                        changed={(event) => this.nameChangeHandler(event, person.id)}/>
+                    })}
+                </div>
+            );
         }
 
-    return (
-      <div className="App">
-          <h1>Hi Im a react app</h1>
-          <p>This is really working</p>
-          <button style= {style} onClick={this.togglePersonHandler}>Toggle Persons</button>
-          {persons}
-      </div>
-    );
+        return (
+            <div className="App">
+                <h1>Hi Im a react app</h1>
+                <p>This is really working</p>
+                <button style= {style} onClick={this.togglePersonHandler}>Toggle Persons</button>
+                {persons}
+            </div>
+            );
 
       // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
-  }
+    }
 }
 
 export default App;
