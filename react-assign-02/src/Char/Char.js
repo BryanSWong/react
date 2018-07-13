@@ -1,9 +1,10 @@
 import React from 'react';
+import './Char.css'
 
 const char = (props) => {
-    return <div>
-        <div onClick={props.clicked}>{props.letter}</div>
-    </div>
+
+    return <div className="Char" onClick={props.clicked}>{props.letter}</div>
+
 };
 
 export default char;

@@ -24,14 +24,6 @@ class App extends Component {
 
     render() {
 
-        const style = {
-            display: 'inline-block',
-            margin: '16px',
-            padding: '16px',
-            border: '10px solid black',
-            textAlign: 'center'
-        };
-
         let input = null;
 
         if(this.state.input[0].word.length > 0){
@@ -41,7 +33,6 @@ class App extends Component {
                         return <Char
                             letter={text}
                             key="123"
-                            style={style}
                             clicked={() => this.deleteHandler(index)}
                         />
                     })}
@@ -78,7 +69,7 @@ export default App;
 *
 * 5. Render a list of CharComponents where each CharComponent receives a different letter entered text
 * (in the initial input field) as a prop.
-*
+* COMPLETE
 *
 * 6. when you click a char component it should be removed form the entered text.
 *
