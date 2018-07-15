@@ -17,9 +17,12 @@ class App extends Component {
     };
 
     deleteHandler = (inputIndex) => {
-        const input = [...this.state.input];
-        input.splice(inputIndex, 1);
-        this.setState({input: input})
+        const currentChars = this.state.input[0].word.split('');
+        //const input = [...this.state.input];
+        //input[0].word.split('');
+        currentChars.splice(inputIndex, 1);
+        const update = currentChars.join('');
+        this.setState({input:[{word: update}]})
     };
 
     render() {
@@ -32,7 +35,7 @@ class App extends Component {
                     {this.state.input[0].word.split('').map((text, index) => {
                         return <Char
                             letter={text}
-                            key="123"
+                            key={Math.random().toString().substring(5)}
                             clicked={() => this.deleteHandler(index)}
                         />
                     })}
