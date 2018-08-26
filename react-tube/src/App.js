@@ -6,10 +6,6 @@ import Login from './components/Login/Login'
 
 class App extends Component {
 
-    componentDidMount(){
-        document.title = "React Tube";
-    }
-
   render() {
     return (
       <div className="App">
