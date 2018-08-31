@@ -4,24 +4,20 @@ import classes from './Login.css';
 
 class Login extends Component {
 
-    render() {
-        return (
-            <div>
-                <h3 className="Title">Sign In</h3>
-                <form className="SignInForm">
-                    <input type="text"
-                           id="username"
-                           className={classes.Button}
-                           placeholder="Enter your username" />
-                    <input type="password"
-                           id="password"
-                           className={classes.Button}
-                           placeholder="Enter your password"/>
-                    <input type="submit" id="submit" value="Log In"></input>
-                </form>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h3 className={classes.Title}>Sign In</h3>
+        <form className={classes.SignInForm}>
+          <input className={classes.FormInput} type="text" id="username"
+                 placeholder="Enter your username" />
+          <input className={classes.FormInput} type="password" id="password"
+                 placeholder="Enter your password"/>
+          <input className={classes.LogInButton} type="submit" id="submit" value="Log In"/>
+        </form>
+      </div>
+    );
+  }
 
 }
 

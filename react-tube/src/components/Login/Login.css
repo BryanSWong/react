@@ -1,28 +1,48 @@
-.Button {
+.SignInForm {
+    /*padding: 10px 10px;*/
+    display: inline-block;
+    width: 30%;
+}
+
+.Title {
+    /*margin-top: 70px;*/
+    margin-top: 3.5rem;
+    display: block;
+}
+
+.FormInput {
+    outline: none;
+    /*border: solid 1px #B6B6B6;*/
+    border: solid 0.088rem #B6B6B6;
+    /*margin-bottom: 20px;*/
+    margin-bottom: 1rem;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    /*height: 30px;*/
+    height: 2rem;
     box-sizing: border-box;
-
 }
 
-@media (min-width: 500px) and (min-height: 400px){
-    .Button{
-        width: 350px;
-        height: 300px;
+.LogInButton {
+    /*margin-top: 15px;*/
+    margin-top: 0.5rem;
+    /*width: 120px;*/
+    width: 8rem;
+    /*height: 40px;*/
+    height: 2rem;
+    background-color: #0067b8;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 414px) {
+    .Title {
+        margin-top: 2.5rem;
     }
-}
-
-@media (min-width: 500px) and (min-height: 401px){
-    .Button{
-        width: 450px;
-        height: 400px;
+    .LogInButton {
+        width: 4.5rem;
+        height: 2rem;
     }
-}
-
-@media (min-width: 1000px) and (min-height: 700px){
-    .Button{
-        width: 700px;
-        height: 600px;
+    .FormInput {
+        width: 150%
     }
 }

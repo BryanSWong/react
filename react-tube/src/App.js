@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import logo from './assets/images/logo.png';
-import './App.css';
+import {Route, Switch} from 'react-router-dom';
 
-import Login from './components/Login/Login'
+import logo from './assets/images/logo.png';
+
+import classes from './App.css';
+
+import Login from './components/Login/Login';
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} id="logo" className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React Tube</h1>
+      <div className={classes.App}>
+        <header className={classes.AppHeader}>
+          <img id="logo" src={logo} className={classes.AppLogo} alt="logo" />
+          <h1 className={classes.AppTitle}>Welcome to React Tube</h1>
         </header>
-
-          <Login/>
-
+        <Login />
       </div>
     );
   }

@@ -5,16 +5,16 @@
 
   <testsuite name="loginTest"
     errors="0" failures="0" hostname="" id="" package="loginTest" skipped="0"
-    tests="6" time="12.05" timestamp="Sun, 26 Aug 2018 21:17:47 GMT">
+    tests="6" time="5.909" timestamp="Wed, 29 Aug 2018 23:54:42 GMT">
   
-    <testcase name="Test 1: Page load" classname="loginTest" time="5.512" assertions="2">
+    <testcase name="Test 1: Page load" classname="loginTest" time="4.771" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 2 : Page header existence" classname="loginTest" time="4.912" assertions="4">
+    <testcase name="Test 2 : Page header existence" classname="loginTest" time="0.3100" assertions="4">
 
     
 
@@ -25,28 +25,28 @@
     
     </testcase>
   
-    <testcase name="Test 3: Logo image existence" classname="loginTest" time="0.4780" assertions="2">
+    <testcase name="Test 3: Logo image existence" classname="loginTest" time="0.1530" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 4: User field existence" classname="loginTest" time="0.2730" assertions="2">
+    <testcase name="Test 4: User field existence" classname="loginTest" time="0.1810" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 5: Password field existence" classname="loginTest" time="0.3170" assertions="2">
+    <testcase name="Test 5: Password field existence" classname="loginTest" time="0.2610" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 6: Submit button existence" classname="loginTest" time="0.5540" assertions="3">
+    <testcase name="Test 6: Submit button existence" classname="loginTest" time="0.2330" assertions="3">
 
     
 
