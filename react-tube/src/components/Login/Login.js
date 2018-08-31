@@ -7,7 +7,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <h3 className={classes.Title}>Sign In</h3>
+        <h3 id="formTitle" className={classes.Title}>Sign In</h3>
         <form className={classes.SignInForm}>
           <input className={classes.FormInput} type="text" id="username"
                  placeholder="Enter your username" />

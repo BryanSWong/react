@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import logo from './assets/images/logo.png';
+import logo from '../../assets/images/logo.png';
 
 import classes from './App.css';
 
-import Login from './components/Login/Login';
+import Login from '../Login/Login';
 
 class App extends Component {
 

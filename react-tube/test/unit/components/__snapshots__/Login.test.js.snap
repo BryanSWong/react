@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component should render correctly in "debug" mode 1`] = `
+<div>
+  <h3
+    id="formTitle"
+  >
+    Sign In
+  </h3>
+  <form>
+    <input
+      id="username"
+      placeholder="Enter your username"
+      type="text"
+    />
+    <input
+      id="password"
+      placeholder="Enter your password"
+      type="password"
+    />
+    <input
+      id="submit"
+      type="submit"
+      value="Log In"
+    />
+  </form>
+</div>
+`;
