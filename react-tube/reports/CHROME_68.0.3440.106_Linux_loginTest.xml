@@ -5,27 +5,16 @@
 
   <testsuite name="loginTest"
     errors="0" failures="0" hostname="" id="" package="loginTest" skipped="0"
-    tests="7" time="13.73" timestamp="Fri, 31 Aug 2018 23:28:24 GMT">
+    tests="7" time="14.96" timestamp="Sat, 01 Sep 2018 00:04:07 GMT">
   
-    <testcase name="Test 1: Page load" classname="loginTest" time="11.51" assertions="2">
+    <testcase name="Test 1: Page load" classname="loginTest" time="12.22" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 2 : Page header existence" classname="loginTest" time="0.4810" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Test 3: Form title existence" classname="loginTest" time="0.3750" assertions="4">
+    <testcase name="Test 2 : Page header existence" classname="loginTest" time="0.5040" assertions="4">
 
     
 
@@ -36,28 +25,39 @@
     
     </testcase>
   
-    <testcase name="Test 4: Logo image existence" classname="loginTest" time="0.3610" assertions="2">
+    <testcase name="Test 3: Form title existence" classname="loginTest" time="0.4240" assertions="4">
+
+    
+
+    
 
     
 
     
     </testcase>
   
-    <testcase name="Test 5: User field existence" classname="loginTest" time="0.2830" assertions="2">
+    <testcase name="Test 4: Logo image existence" classname="loginTest" time="0.5970" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 6: Password field existence" classname="loginTest" time="0.3030" assertions="2">
+    <testcase name="Test 5: User field existence" classname="loginTest" time="0.4600" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Test 7: Submit button existence" classname="loginTest" time="0.4260" assertions="3">
+    <testcase name="Test 6: Password field existence" classname="loginTest" time="0.3060" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 7: Submit button existence" classname="loginTest" time="0.4540" assertions="3">
 
     
 

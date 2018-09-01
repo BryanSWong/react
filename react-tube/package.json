@@ -46,12 +46,6 @@
     "webpack-manifest-plugin": "1.3.2",
     "whatwg-fetch": "2.0.3"
   },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom --coverage --forceExit",
-    "tdd": "nightwatch --config nightwatch.conf.BASIC.js"
-  },
   "devDependencies": {
     "chromedriver": "^2.41.0",
     "env2": "^2.2.2",
@@ -60,6 +54,13 @@
     "enzyme-to-json": "^3.3.4",
     "nightwatch": "^0.9.21",
     "selenium-server": "^3.14.0"
+  },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom --coverage --forceExit",
+    "tdd": "nightwatch --config nightwatch.conf.SAUCE.js -e chrome,firefox,safari,edge",
+    "tdd_local": "nightwatch --config nightwatch.conf.BASIC.js"
   },
   "jest": {
     "collectCoverageFrom": [
