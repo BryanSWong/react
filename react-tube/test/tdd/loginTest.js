@@ -1,3 +1,9 @@
+const buttonLocator = '#submit';
+const errorLocator = '#error_block';
+const usernameLocator = '#username';
+const passwordLocator =  '#password';
+const successLocator = '#success';
+
 module.exports = {
 
     beforeEach: (browser) => {
@@ -46,11 +52,35 @@ module.exports = {
     },
 
     'Test 7: Submit button existence': (browser) => {
-        const locator = '#submit';
         const buttonName = 'Log In';
         browser
-            .assert.visible(locator, 'Verify the existence of submit button.')
-            .assert.value(locator, buttonName, `Verify that the text inside the button is '${buttonName}'.`)
+            .assert.visible(buttonLocator, 'Verify the existence of submit button.')
+            .assert.value(buttonLocator, buttonName, `Verify that the text inside the button is '${buttonName}'.`)
+            //.end();
+    },
+
+    'Test 8: Attempt to login with invalid credentials and verify the error': (browser) => {
+
+        const user = 'Bryan';
+        const pass = 'password';
+        browser
+            .setValue(usernameLocator, user)
+            .setValue(passwordLocator, pass)
+            .click(buttonLocator)
+            .waitForElementPresent(errorLocator)
+            .waitForElementVisible(errorLocator)
+            .expect.element(errorLocator).text.to.equal('Invalid login credentials detected, please enter the correct ones.');
+    },
+
+    'Test 9: Login with correct credentials': (browser) => {
+        const user = 'admin';
+        const pass = 'admin';
+        browser.setValue(usernameLocator, user)
+            .setValue(passwordLocator, pass)
+            .click(buttonLocator)
+            .waitForElementPresent(successLocator)
+            .waitForElementVisible(successLocator)
+            .expect.element(successLocator).text.to.equal('Success')
             .end();
     }
 
