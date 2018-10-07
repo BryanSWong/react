@@ -88,7 +88,7 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
       
       // Support React Native Web
@@ -114,7 +114,7 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         enforce: 'pre',
         use: [
           {
@@ -130,14 +130,14 @@ module.exports = {
       },
       {
         // "oneOf" will traverse all following loaders until one will
-        // match the requirements. When no Loader matches it will fall
-        // back to the "file" Loader at the end of the Loader list.
+        // match the requirements. When no loader matches it will fall
+        // back to the "file" loader at the end of the loader list.
         oneOf: [
-          // "url" Loader works just like "file" Loader but it also embeds
+          // "url" loader works just like "file" loader but it also embeds
           // assets smaller than specified size as data URLs to avoid requests.
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-Loader'),
+            loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]',
@@ -145,7 +145,7 @@ module.exports = {
           },
           // Process JS with Babel.
           {
-            test: /\.(js|jsx|mjs)$/,
+            test: /\.(js|jsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
@@ -154,41 +154,36 @@ module.exports = {
             },
           },
           // The notation here is somewhat confusing.
-          // "postcss" Loader applies autoprefixer to our CSS.
-          // "css" Loader resolves paths in CSS and adds assets as dependencies.
-          // "style" Loader normally turns CSS into JS modules injecting <style>,
+          // "postcss" loader applies autoprefixer to our CSS.
+          // "css" loader resolves paths in CSS and adds assets as dependencies.
+          // "style" loader normally turns CSS into JS modules injecting <style>,
           // but unlike in development configuration, we do something different.
           // `ExtractTextPlugin` first applies the "postcss" and "css" loaders
           // (second argument), then grabs the result CSS and puts it into a
           // separate file in our build process. This way we actually ship
           // a single CSS file in production instead of JS code injecting <style>
           // tags. If you use code splitting, however, any async bundles will still
-          // use the "style" Loader inside the async code so CSS from them won't be
+          // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
-                  fallback: {
-                    loader: require.resolve('style-Loader'),
-                    options: {
-                      hmr: false,
-                    },
-                  },
+                  fallback: require.resolve('style-loader'),
                   use: [
                     {
-                      loader: require.resolve('css-Loader'),
+                      loader: require.resolve('css-loader'),
                       options: {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
-                          modules: true,
-                          localIdentName: '[name]__[local]__[hash:base64:5]',
+                        modules: true,
+                        localIdentName: '[name]__[local]__[hash:base64:5]'
                       },
                     },
                     {
-                      loader: require.resolve('postcss-Loader'),
+                      loader: require.resolve('postcss-loader'),
                       options: {
                         // Necessary for external CSS imports to work
                         // https://github.com/facebookincubator/create-react-app/issues/2677
@@ -214,23 +209,23 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
-          // "file" Loader makes sure assets end up in the `build` folder.
+          // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
-          // This Loader doesn't use a "test" so it will catch all modules
+          // This loader don't uses a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            loader: require.resolve('file-Loader'),
-            // Exclude `js` files to keep "css" Loader working as it injects
-            // it's runtime that would otherwise processed through "file" Loader.
+            loader: require.resolve('file-loader'),
+            // Exclude `js` files to keep "css" loader working as it injects
+            // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          // ** STOP ** Are you adding a new Loader?
-          // Make sure to add the new Loader(s) before the "file" Loader.
+          // ** STOP ** Are you adding a new loader?
+          // Make sure to add the new loader(s) before the "file" loader.
         ],
       },
     ],
@@ -273,9 +268,6 @@ module.exports = {
         // Pending further investigation:
         // https://github.com/mishoo/UglifyJS2/issues/2011
         comparisons: false,
-      },
-      mangle: {
-        safari10: true,
       },
       output: {
         comments: false,

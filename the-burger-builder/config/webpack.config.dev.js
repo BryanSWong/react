@@ -53,6 +53,8 @@ module.exports = {
     // changing JS code would still trigger a refresh.
   ],
   output: {
+    // Next line is not used in dev but WebpackDevServer crashes without it:
+    path: paths.appBuild,
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
     // This does not produce a real file. It's just the virtual path that is
@@ -82,7 +84,7 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
       
       // Support React Native Web
@@ -108,7 +110,7 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         enforce: 'pre',
         use: [
           {
@@ -124,15 +126,15 @@ module.exports = {
       },
       {
         // "oneOf" will traverse all following loaders until one will
-        // match the requirements. When no Loader matches it will fall
-        // back to the "file" Loader at the end of the Loader list.
+        // match the requirements. When no loader matches it will fall
+        // back to the "file" loader at the end of the loader list.
         oneOf: [
-          // "url" Loader works like "file" Loader except that it embeds assets
+          // "url" loader works like "file" loader except that it embeds assets
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-Loader'),
+            loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]',
@@ -140,36 +142,36 @@ module.exports = {
           },
           // Process JS with Babel.
           {
-            test: /\.(js|jsx|mjs)$/,
+            test: /\.(js|jsx)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
               
-              // This is a feature of `babel-Loader` for webpack (not Babel itself).
-              // It enables caching results in ./node_modules/.cache/babel-Loader/
+              // This is a feature of `babel-loader` for webpack (not Babel itself).
+              // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
             },
           },
-          // "postcss" Loader applies autoprefixer to our CSS.
-          // "css" Loader resolves paths in CSS and adds assets as dependencies.
-          // "style" Loader turns CSS into JS modules that inject <style> tags.
+          // "postcss" loader applies autoprefixer to our CSS.
+          // "css" loader resolves paths in CSS and adds assets as dependencies.
+          // "style" loader turns CSS into JS modules that inject <style> tags.
           // In production, we use a plugin to extract that CSS to a file, but
-          // in development "style" Loader enables hot editing of CSS.
+          // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
             use: [
-              require.resolve('style-Loader'),
+              require.resolve('style-loader'),
               {
-                loader: require.resolve('css-Loader'),
+                loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
-                    modules: true,
-                    localIdentName: '[name]__[local]__[hash:base64:5]',
+                  modules: true,
+                  localIdentName: '[name]__[local]__[hash:base64:5]'
                 },
               },
               {
-                loader: require.resolve('postcss-Loader'),
+                loader: require.resolve('postcss-loader'),
                 options: {
                   // Necessary for external CSS imports to work
                   // https://github.com/facebookincubator/create-react-app/issues/2677
@@ -190,26 +192,26 @@ module.exports = {
               },
             ],
           },
-          // "file" Loader makes sure those assets get served by WebpackDevServer.
+          // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
-          // This Loader doesn't use a "test" so it will catch all modules
+          // This loader don't uses a "test" so it will catch all modules
           // that fall through the other loaders.
           {
-            // Exclude `js` files to keep "css" Loader working as it injects
-            // its runtime that would otherwise processed through "file" Loader.
+            // Exclude `js` files to keep "css" loader working as it injects
+            // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
-            loader: require.resolve('file-Loader'),
+            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
         ],
       },
-      // ** STOP ** Are you adding a new Loader?
-      // Make sure to add the new Loader(s) before the "file" Loader.
+      // ** STOP ** Are you adding a new loader?
+      // Make sure to add the new loader(s) before the "file" loader.
     ],
   },
   plugins: [

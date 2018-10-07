@@ -3,9 +3,9 @@
     padding: 0;
     list-style: none;
     display: flex;
-    align-items: center;
-    height: 80%;
     flex-flow: column;
+    align-items: center;
+    height: 100%;
 }
 
 @media (min-width: 500px) {

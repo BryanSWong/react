@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703b09;
+    background-color: #703B09;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,7 @@
     height: 100%;
 }
 
-.Logo{
+.Logo {
     height: 80%;
 }
 
@@ -25,5 +25,4 @@
     .DesktopOnly {
         display: none;
     }
-    
 }
