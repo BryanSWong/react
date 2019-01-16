@@ -9,6 +9,9 @@
 # production
 /build
 
+# files
+/src/store/actions/key.js
+
 # misc
 .DS_Store
 .env.local
