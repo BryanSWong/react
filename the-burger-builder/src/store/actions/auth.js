@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import importantKey from './key'
 
 import axios from 'axios';
 
@@ -50,15 +51,14 @@ export const auth = (email, password, isSignup) => {
           returnSecuretoken: true
         };
 
-        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyD4Zigv_1LXWsw4OumxbBXJMEURS3X_5d8';
+        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + importantKey;
 
         if(!isSignup){
-            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyD4Zigv_1LXWsw4OumxbBXJMEURS3X_5d8';
+            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key='+ importantKey;
         }
 
         axios.post(url, authData)
             .then(response => {
-                console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);
@@ -67,7 +67,6 @@ export const auth = (email, password, isSignup) => {
                 dispatch(checkAuthTimeout(response.data.expiresIN));
             })
             .catch(err => {
-                console.log(err);
                 dispatch(authFail(err.response.data.error));
             });
     }

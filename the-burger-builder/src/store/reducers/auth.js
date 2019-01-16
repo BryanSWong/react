@@ -1,11 +1,12 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from "../utility";
+import { updateObject } from "../../shared/utility";
 
 const initialState = {
     token: null,
     userID: null,
     error: null,
-    laoding: false
+    loading: false,
+    authRedirect: '/'
 };
 
 const authStart = (state, action) => { return updateObject(state, {error: null, loading: true})};
@@ -16,7 +17,7 @@ const authSuccess = (state, action) => {
         userID: action.userID,
         error: null,
         loading: false,
-        authRedirect: '/'
+
     });
 };
 
